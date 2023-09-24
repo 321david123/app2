@@ -1,0 +1,6 @@
+:root{
+    --background-dark: #191919;
+}
+[data-theme='dark'] {
+    --background-light: #f2f3f4;
+}

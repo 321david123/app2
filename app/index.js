@@ -1,21 +1,32 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Stack } from "expo-router";
+import { StyleSheet, Text, View, Image, Dimensions, useColorScheme } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Page() {
+  const theme = useColorScheme();
+  const isDarkTheme = theme === 'dark';
+  let ScreenHeight = Dimensions.get("window").height;
+  let ScreenWidth = Dimensions.get("window").width;
   return (
+    <SafeAreaView 
+    style={[
+       {
+        flex: 1
+      },
+         isDarkTheme
+          ? { backgroundColor: '#191919' } 
+          : { backgroundColor: '#f2f3f4' },
+        ]}>
+      <Stack.Screen options={{ headerShown: false }}/>
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
         <Image 
-          style={{ width: 100, height: 100, marginBottom: 15 }}
+          style={{ width: 300, height: 400, margin:344, marginBottom:390}}
           source={require("../assets/Cockroach.png")}
-        />
-        <Image 
-          style={{ width: 100, height: 100, marginBottom: 15 }}
-          source={{ uri: "https://reactjs.org/logo-og.png" }}
         />
       </View>
     </View>
+    </SafeAreaView>
   );
 }
 
